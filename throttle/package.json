@@ -1,5 +1,4 @@
 {
-  "name": "throttle",
   "private": true,
   "scripts": {
     "test": "../node_modules/.bin/mocha"
