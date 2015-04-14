@@ -1,0 +1,13 @@
+{
+  "name": "exercises",
+  "private": true,
+  "description": "some javascript exercises",
+  "scripts": {
+    "test": "mocha '**/test.js'"
+  },
+  "author": "Moshe Kolodny",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.2.4"
+  }
+}
