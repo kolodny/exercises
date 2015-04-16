@@ -3,12 +3,12 @@ These are some basic (and advanced) coding challenges
 Here's the basic workflow:
 
 ```bash
-git clone https://github.com/kolodny/exercises
-cd exercises
-npm install
-cd throttle
-vi index.js
-npm test
+[~]         $ git clone https://github.com/kolodny/exercises
+[~]         $ cd exercises
+[exercises] $ npm install
+[exercises] $ cd throttle
+[throttle]  $ vi index.js
+[throttle]  $ npm test
 ```
 This uses a basic TDD approach so take a look at the test.js file in each directory to see what needs to be implemented, write an index.js as the solution file
 
