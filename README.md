@@ -1,21 +1,9 @@
-These are some basic (and advanced) coding challenges
+## READ THIS FIRST
 
-Here's the basic workflow:
+Hello there, you seem to have quite an exploratory personality.  
+Anyway if you found this place, you probably can figure out how to get to the soltions.  
+Please don't publicize this branch, if people really want to know how to solve something then they'll find this themselves or ask someone else.
 
-```bash
-git clone https://github.com/kolodny/exercises
-cd exercises
-npm install
-cd throttle
-vi index.js
-npm test
-```
+This is really **my** take on the questions and as such isn't really a place to make PR's for your solutions, those belong on you fork.
 
-
-### Contributing
-
-Pull requests welcome, please follow the basic workflow:
-
-1. Make a folder
-2. Copy a package.json from a sibling folder
-3. Make a test.js file
+If you do contribute a challenge, please also have a similar branch with a similar setup (some obscurity), although this isn't really required.
