@@ -25,7 +25,7 @@ middleware.use(function(next) {
 var start = new Date();
 middleware.go(function() {
   console.log(this.hook1); // true
-  console.log(this.hook1); // true
+  console.log(this.hook2); // true
   console.log(new Date() - start); // around 20
 });
 ```
