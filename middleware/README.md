@@ -10,6 +10,7 @@ middleware.use(function(next) {
   var self = this;
   setTimeout(function() {
     self.hook1 = true;
+    next();
   }, 10);
 });
 
@@ -17,6 +18,7 @@ middleware.use(function(next) {
   var self = this;
   setTimeout(function() {
     self.hook2 = true;
+    next();
   }, 10);
 });
 
