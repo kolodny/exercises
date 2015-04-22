@@ -11,4 +11,6 @@ console.log(sorted); // [1, 2, 3, 4, 5]
 
 Sorting should work based on numbers eg (10 < 2)
 
+Obviously using the native sort function is cheating, so don't use it
+
 More info: http://en.wikipedia.org/wiki/Sorting_algorithm
