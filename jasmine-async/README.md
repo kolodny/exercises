@@ -33,6 +33,7 @@ itWill(function() {
     setup: function(done) {
       setTimeout(function() {
         flag = true;
+        done();
       }, 500);
     },
     test: function() {
