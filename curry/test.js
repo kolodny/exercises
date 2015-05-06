@@ -29,7 +29,7 @@ describe('curry', function() {
       return a + b + c;
     });
     assert.equal(add(1)(2)(3), 6);
-    assert.equal(add(1)(2)(3), 6);
+    assert.equal(add(2)(3)(4), 9);
   });
 
 
