@@ -8,7 +8,7 @@ function add(a, b) {
 }
 
 var curried = curry(add);
-console.log(  curied(1)(2)  ); // 3
+console.log(  curried(1)(2)  ); // 3
 ```
 
 More info: http://en.wikipedia.org/wiki/Curry_%28programming_language%29
