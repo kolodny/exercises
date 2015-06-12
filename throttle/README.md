@@ -9,10 +9,10 @@ var sayHi = function() {
 
 var throttled = throttle(sayHi, 100);
 
-sayHi();
-sayHi();
-sayHi();
-sayHi();
+throttled();
+throttled();
+throttled();
+throttled();
 
 // there should only be one 'hi' message on the console
 ```
