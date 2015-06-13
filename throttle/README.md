@@ -3,18 +3,20 @@ Here's the basic usage of the file that you'll be creating:
 ```js
 var throttle = require('./') // <- this is the file you make;
 
-var sayHi = function() {
-  console.log('hi');
+var log = function(msg) {
+  console.log(msg);
 };
 
-var throttled = throttle(sayHi, 100);
+var throttled = throttle(log, 100);
 
-throttled();
-throttled();
-throttled();
-throttled();
+throttled("First");
+throttled("Second");
+throttled("Third");
+throttled("Fourth");
 
-// there should only be one 'hi' message on the console
+// Output should be:
+// First
+// Fourth
 ```
 
 More info: http://underscorejs.org/#throttle
