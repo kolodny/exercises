@@ -1,5 +1,6 @@
 var inject = (function() {
   var assert = require('assert');
+  var testCase;
   var thingsToDo = [];
   var runs = function(runFn) {
     thingsToDo.push({type: 'run', todo: runFn});
@@ -8,7 +9,16 @@ var inject = (function() {
     thingsToDo.push({type: 'waitsFor', todo: waitsForFn});
   };
   var it = function(desc, fn) {
-    fn();
+    testCase = {
+      desc: desc,
+      fn: fn
+    };
+    
+  };
+  module.exports.run = function (cb){
+    assert(testCase, "It not called at all");
+    testCase.fn();
+    assert.equal(thingsToDo.length, 3, 'Not using runs and waitsFor properly');
     assert.equal(thingsToDo[0].type, 'run');
     assert.equal(thingsToDo[1].type, 'waitsFor');
     assert.equal(thingsToDo[2].type, 'run');
@@ -17,11 +27,13 @@ var inject = (function() {
     function next() {
       if (thingsToDo[1].todo()) {
         thingsToDo[2].todo();
+        cb();
       } else {
         setTimeout(next, 1);
       }
     }
-  };
+
+  }
 
 }).toString().split('\n').slice(1, -1).join('\n');
 
@@ -49,10 +61,11 @@ describe('jasmineAsync', function() {
         },
         test: function() {
           assert.equal(test, 1);
-          done();
         }
       };
-    })
+    });
+
+    jasmineAsync.run(done);
 
   });
 
