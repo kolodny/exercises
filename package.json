@@ -4,11 +4,12 @@
   "description": "some javascript exercises",
   "scripts": {
     "test": "echo \"Error: run npm test from inside the challange directories or do 'npm run test-all'\" && exit 1",
-    "test-all": "mocha '**/test.js'"
+    "test-all": "mocha '**/test.js' --compilers js:babel/register"
   },
   "author": "Moshe Kolodny",
   "license": "MIT",
   "devDependencies": {
+    "babel": "^5.5.7",
     "mocha": "^2.2.4"
   }
 }
