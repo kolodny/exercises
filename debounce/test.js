@@ -5,7 +5,7 @@ describe('debounce', function() {
   it('waits for the threshold to pass before executing', function(done) {
     var now = new Date();
     var debounced = debounce(function() {
-      assert.equal(new Date() - now > 10);
+      assert(new Date() - now > 10);
       done();
       called++;
     }, 10);
