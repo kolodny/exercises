@@ -38,7 +38,7 @@ describe('throttle', function() {
     throttled.call(11);
     throttled.call(22);
     setTimeout(function() {
-      assert.equal(ctx, 22);
+      assert.equal(ctx, 11);
       done();
     }, 15)
   });
@@ -51,7 +51,7 @@ describe('throttle', function() {
     throttled(11, 22, 33);
     throttled(22, 33, 44);
     setTimeout(function() {
-      assert.deepEqual(args, [22, 33, 44]);
+      assert.deepEqual(args, [11, 22, 33]);
       done();
     }, 15);
   });
