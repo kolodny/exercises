@@ -14,7 +14,10 @@ throttled();
 throttled();
 throttled();
 
-// there should only be one 'hi' message on the console
+// there should only be two 'hi' messages on the console
 ```
 
 More info: http://underscorejs.org/#throttle
+
+
+### [Difference between debounce and throttle](https://github.com/kolodny/exercises/tree/master/debounce#difference-between-debounce-and-throttle)
