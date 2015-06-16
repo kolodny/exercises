@@ -1,3 +1,5 @@
+[![Gitter][gitter-image]][gitter-url]
+
 These are some basic (and advanced) coding challenges
 
 Here's the basic workflow:
@@ -20,3 +22,6 @@ Pull requests welcome, please follow the basic workflow:
 2. Copy a package.json from a sibling folder
 3. Make a test.js file
 4. Optionally provide a README.md
+
+[gitter-image]: https://badges.gitter.im/Join%20Chat.svg
+[gitter-url]: https://gitter.im/kolodny/exercises
