@@ -37,7 +37,7 @@ describe('debounce', function() {
     setTimeout(function() {
       assert.equal(called, 2);
       done();
-    }, 35);
+    }, 45);
   });
 
   it('gets called with context', function(done) {
