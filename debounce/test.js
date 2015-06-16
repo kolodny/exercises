@@ -7,7 +7,6 @@ describe('debounce', function() {
     var debounced = debounce(function() {
       assert(new Date() - now > 10);
       done();
-      called++;
     }, 10);
     debounced();
   });
