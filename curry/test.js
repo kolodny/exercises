@@ -38,6 +38,13 @@ describe('curry', function() {
     assert.equal(add(1)(2)(3), 6);
     assert.equal(add(2)(3)(4), 9);
   });
+  
+  it("doesn't only work with addition", function() {
+    var merge = curry(function(a, b, c) {
+      return [a, b, c].join(', ');
+    });
+    assert.equal(merge('1')(2)(3), '1, 2, 3');
+  });
 
 
 });
