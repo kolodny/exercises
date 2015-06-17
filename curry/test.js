@@ -1,5 +1,5 @@
 var assert = require('assert');
-var curry = require('./');
+var curry = require('./curry');
 
 describe('curry', function() {
 
@@ -31,6 +31,5 @@ describe('curry', function() {
     assert.equal(add(1)(2)(3), 6);
     assert.equal(add(2)(3)(4), 9);
   });
-
 
 });

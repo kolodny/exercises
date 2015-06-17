@@ -5,9 +5,8 @@ describe('debounce', function() {
   it('waits for the threshold to pass before executing', function(done) {
     var now = new Date();
     var debounced = debounce(function() {
-      assert(new Date() - now > 10);
+      assert(new Date() - now >= 10);
       done();
-      called++;
     }, 10);
     debounced();
   });
@@ -37,7 +36,7 @@ describe('debounce', function() {
     setTimeout(function() {
       assert.equal(called, 2);
       done();
-    }, 35);
+    }, 45);
   });
 
   it('gets called with context', function(done) {

@@ -1,6 +1,6 @@
 {
   "private": true,
   "scripts": {
-    "test": "node ../node_modules/mocha/bin/mocha --compilers js:babel/register"
+    "test": "../node_modules/.bin/mocha"
   }
 }

@@ -1,5 +1,5 @@
 var assert = require('assert');
-var throttle = require('./');
+var throttle = require('./throttle');
 
 describe('throttle', function() {
   it('executes right away', function() {

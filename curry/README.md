@@ -11,4 +11,4 @@ var curried = curry(add);
 console.log(  curried(1)(2)  ); // 3
 ```
 
-More info: http://en.wikipedia.org/wiki/Curry_%28programming_language%29
+More info: https://en.wikipedia.org/wiki/Currying

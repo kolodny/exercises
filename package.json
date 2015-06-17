@@ -10,6 +10,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel": "^5.5.7",
-    "mocha": "^2.2.4"
+    "mocha": "^2.2.4",
+    "source-map-support": "^0.3.1"
   }
 }
