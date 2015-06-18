@@ -19,8 +19,8 @@ right.right = rightOfRight;
 
 invertTree(root);
 
-console.log(root.left.left); // should be 9
+console.log(root.left.left.value); // should be 9
 ```
 
-More info: https://en.wikipedia.org/?title=Binary_tree
-Also https://twitter.com/mxcl/status/608682016205344768 ;P
+More info: https://en.wikipedia.org/?title=Binary_tree  
+Also https://twitter.com/mxcl/status/608682016205344768 :wink: 
