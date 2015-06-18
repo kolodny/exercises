@@ -46,5 +46,14 @@ describe('curry', function() {
     assert.equal(merge('1')(2)(3), '1, 2, 3');
   });
 
+  it("doesn't share state between inner calls", function() {
+    var add = curry(function(a, b, c, d) {
+        return a + b + c + d;
+    });
+    var firstTwo = add(1)(2);
+    assert.equal(firstTwo(3)(4), 10);
+    var firstThree = firstTwo(5);
+    assert.equal(firstThree(6), 14);
+  });
 
 });
