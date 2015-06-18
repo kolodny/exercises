@@ -32,9 +32,9 @@ var whoa = function() {
   }
 };
 
-value(scalar);   // should be      2;
-value(fn);       // should also be 2;
-value(fnTwice);  // should aslo be 2;
+value(scalar);   // should be 1;
+value(fn);       // should be 2;
+value(fnTwice);  // should also be 2;
 value(fnThrice); // should also be 2;
 
 value(whoa); // should be 'hi'
