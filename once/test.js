@@ -14,10 +14,9 @@ describe('once', function() {
   });
 
   it('will return the value from the original call for later calls', function() {
+    var t = 10;
     var init = once(function() {
-      var t = 10;
-      t++;
-      return t;
+      return ++t;
     });
     var ret = init();
     assert.deepEqual(init(), ret);
