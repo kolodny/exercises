@@ -22,21 +22,21 @@ var whoa = function() {
               return function() {
                 return function() {
                   return 'hi';
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 };
 
 value(scalar);   // should be      'foo'
-value(fn);       // should also    'bar'
+value(fn);       // should be      'bar'
 value(fnTwice);  // should aslo be 'bar'
 value(fnThrice); // should also be 'bar'
 
-value(whoa); // should be 'hi'
+value(whoa);     // should be      'hi'
 
 ```
