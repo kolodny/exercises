@@ -3,8 +3,8 @@ Here's the basic usage of the file that you'll be creating:
 ```js
 var value = require('./') // <- this is the file you make;
 
-var scalar = 1;
-var fn = function() { return 2; };
+var scalar = 'foo';
+var fn = function() { return 'bar'; };
 var fnTwice = function() {
   return fn;
 };
@@ -32,10 +32,10 @@ var whoa = function() {
   }
 };
 
-value(scalar);   // should be      2;
-value(fn);       // should also be 2;
-value(fnTwice);  // should aslo be 2;
-value(fnThrice); // should also be 2;
+value(scalar);   // should be      'foo'
+value(fn);       // should also    'bar'
+value(fnTwice);  // should aslo be 'bar'
+value(fnThrice); // should also be 'bar'
 
 value(whoa); // should be 'hi'
 
