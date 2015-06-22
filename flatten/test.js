@@ -8,6 +8,10 @@ describe('flatten', function() {
     assert.notEqual(flatten(arr), arr);
   });
 
+  it('will flatten an simple array', function() {
+    assert.deepEqual(flatten([1, 2, 3, 4, [5]]), [1, 2, 3, 4, 5]);
+  });
+
   it('will flatten an array', function() {
     assert.deepEqual(flatten(arr), [1, 2, 3, 4, 5]);
   });
