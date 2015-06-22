@@ -1,24 +1,7 @@
 var assert = require('assert');
-
-var NativeMap = Array.prototype.map;
-var calledNativeMap;
-Array.prototype.map = function() {
-  calledNativeMap = true;
-  return NativeMap.apply(this, arguments);
-}
-
 var map = require('./');
 
-
-
 describe('map', function() {
-
-  it('should not use the native map', function() {
-    calledNativeMap = false;
-    ['x'].map(function(x) { return x; });
-    assert(!calledNativeMap);
-  });
-
   it('should return another array', function() {
     var arr = [1, 2, 3];
     var mapped = map(arr, function() {});
@@ -39,7 +22,7 @@ describe('map', function() {
     var called = 0;
     var arr = [1, 2, 3];
 
-    map(function(value) {
+    map(arr, function(value) {
       called++;
       return value;
     });
@@ -79,5 +62,13 @@ describe('map', function() {
     }, 3);
 
     assert.equal(ctx, 3);
+  });
+
+  it('should not use the native map', function() {
+    var NativeMap = Array.prototype.map;
+    Array.prototype.map = function() {
+      assert(false);
+    };
+    map(['x'], function(value) { return value; });
   });
 });
