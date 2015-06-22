@@ -15,7 +15,7 @@ describe('map', function() {
 
   it('should not use the native map', function() {
     calledNativeMap = false;
-    ['x'].map(function(x) { return x; });
+    map(['x'], function(x) { return x; });
     assert(!calledNativeMap);
   });
 
@@ -39,7 +39,7 @@ describe('map', function() {
     var called = 0;
     var arr = [1, 2, 3];
 
-    map(function(value) {
+    map(arr, function(value) {
       called++;
       return value;
     });
