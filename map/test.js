@@ -1,43 +1,45 @@
 var assert = require('assert');
-require('./')();
 
-describe('Array.prototype._map', function() {
-  describe('should not', function() {
-    it('use the default .map function inside', function() {
-      Array.prototype.map = null;
-      assert.doesNotThrow(
-        function() {
-          [1]._map(function() {});
-        }
-      );
-    });
-  });
+var NativeMap = Array.prototype.map;
+var calledNativeMap;
+Array.prototype.map = function() {
+  calledNativeMap = true;
+  return NativeMap.apply(this, arguments);
+}
 
-  it('should be a function', function() {
-    assert.equal(typeof Array.prototype._map, 'function');
+var map = require('./');
+
+
+
+describe('map', function() {
+
+  it('should not use the native map', function() {
+    calledNativeMap = false;
+    ['x'].map(function(x) { return x; });
+    assert(!calledNativeMap);
   });
 
   it('should return another array', function() {
     var arr = [1, 2, 3];
-    var ret = arr._map(function() {});
+    var mapped = map(arr, function() {});
 
-    assert.notEqual(arr, ret);
+    assert.notEqual(arr, mapped);
   });
 
   it('should return the right results', function() {
     var arr = [1, 2, 3];
-    var ret = arr._map(function(value) {
+    var mapped = map(arr, function(value) {
       return value * 2;
     });
 
-    assert.deepEqual(ret, [2, 4, 6]);
+    assert.deepEqual(mapped, [2, 4, 6]);
   });
 
   it('callback will be called once for each element', function() {
     var called = 0;
     var arr = [1, 2, 3];
 
-    arr._map(function(value) {
+    map(function(value) {
       called++;
       return value;
     });
@@ -45,24 +47,11 @@ describe('Array.prototype._map', function() {
     assert.equal(called, 3);
   });
 
-  it('callback will be invoked only for indexes which have assigned values', function() {
-    var called = 0;
-    var arr = [1, 'text', true, null, undefined, [], {}];
-    delete arr[0];
-
-    arr._map(function(value) {
-      called++;
-      return value;
-    });
-
-    assert.equal(called, 6);
-  });
-
   it('callback will be invoked with three arguments', function() {
     var args;
     var arr = [1];
 
-    arr._map(function() {
+    map(arr, function() {
       args = arguments.length;
     });
 
@@ -73,7 +62,7 @@ describe('Array.prototype._map', function() {
     var i = 0;
     var arr = [1, 2, 3];
 
-    arr._map(function(value, index, array) {
+    map(arr, function(value, index, array) {
       assert.equal(value, arr[i]);
       assert.equal(index, i);
       assert.deepEqual(arr, array);
@@ -85,7 +74,7 @@ describe('Array.prototype._map', function() {
     var ctx;
     var arr = [5];
 
-    arr._map(function() {
+    map(arr, function() {
       ctx = this;
     }, 3);
 
