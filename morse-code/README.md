@@ -1,6 +1,6 @@
 Let's create a morse code transmitter
 
-Create a function that gets injected: lightbulb toggler function, a timeout mechanism function, a string message, and a map of chars to dot-dashes and make magic happen, addionally it should run a callback when done
+Create a function that gets injected: a lightbulb toggler function, a timeout mechanism function, a string message, and a map of chars to dot-dashes and make magic happen, addionally it should run a callback when done
 
 The timeout mechanism is like setTimeout, the difference is that it takes a measurement of dots instead of ms so instead of `setTimeout(toggle, 150)` for dot you would do `options.timeouter(toggle, 1)` and for a dash you would do `options.timeouter(toggle, 3)`
 
@@ -25,7 +25,7 @@ Here's the the basic idea of how the file you make will get used
 ```js
 var transmitter = require('./') // <- this is the file you make;
 
-var codes = {s: '...', o: '---'}; // lowercase letters only
+var codes = {s: '...', o: '---'};
 var message = 'sos';
 var timeouter = function(fn, ms) { setTimeout(fn, ms * 50); };
 var toggle = function() {
