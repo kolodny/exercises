@@ -53,7 +53,7 @@ describe('transmitter', function() {
       timeouter: timeouter
     }
     transmitter(options, function() {
-      assert.deepEqual(fixTimes(toggledHistory, 50), [
+      assert.deepEqual(toggledHistory, [
         0, 50, 100, 150, 200, 250, 400, 550, 600, 750, 800,
         950, 1100, 1150, 1200, 1250, 1300, 1350
       ]);
@@ -70,7 +70,7 @@ describe('transmitter', function() {
       timeouter: timeouter
     }
     transmitter(options, function() {
-      assert.deepEqual(fixTimes(toggledHistory, 50), [
+      assert.deepEqual(toggledHistory, [
         0, 150, 300, 350, 400, 450, 500, 550, 600, 650,
         800, 850, 900, 950, 1100, 1150, 1200, 1250, 1300,
         1350, 1700, 1750, 1800, 1850, 2000, 2050, 2100,
