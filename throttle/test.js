@@ -1,7 +1,13 @@
 var assert = require('assert');
+var sinon = require('sinon');
 var throttle = require('./');
 
 describe('throttle', function() {
+  var clock;
+
+  beforeEach(function () { clock = sinon.useFakeTimers(); });
+  afterEach(function () { clock.restore(); });
+
   it('executes right away', function() {
     var passed = false;
     var throttled = throttle(function() {
@@ -9,6 +15,7 @@ describe('throttle', function() {
     }, 10);
     throttled();
     assert(passed);
+    clock.tick(100);
   });
 
   it("won't execute more than once within the threshold", function(done) {
@@ -23,6 +30,7 @@ describe('throttle', function() {
       assert.equal(called, 1);
       done();
     }, 5);
+    clock.tick(100);
   });
 
   it("will execute at least once more to make up for swallowed calls", function(done) {
@@ -36,21 +44,25 @@ describe('throttle', function() {
       assert.equal(called, 2);
       done();
     }, 15);
+    clock.tick(100);
   });
 
   it('will execute every threshold ms', function(done) {
-    var called = 0;
+    var startTime = new Date();
+    var calledTimes = [];
     var throttled = throttle(function() {
-      called++;
+      calledTimes.push(new Date() - startTime);
     }, 10);
-    var interval = setInterval(throttled, 2);
+    throttled(); //start now
+    var interval = setInterval(throttled, 1);
     setTimeout(function() {
       clearInterval(interval);
-      assert.equal(called, 6);
-      // it'll be called again in another 5 ms, but last test took care of that
+
+      assert.deepEqual(calledTimes, [0, 11, 22, 33, 44, 55]);
 
       done();
-    }, 55);
+    }, 59);
+    clock.tick(100);
 
   });
 
@@ -84,6 +96,7 @@ describe('throttle', function() {
       assert.deepEqual(args, [33, 44, 55]);
       done();
     }, 15)
+    clock.tick(100);
   });
 
 

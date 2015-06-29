@@ -10,6 +10,6 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "^2.2.4",
-    "time-travel": "^1.0.1"
+    "sinon": "^1.15.3"
   }
 }

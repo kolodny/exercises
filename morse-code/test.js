@@ -1,9 +1,14 @@
 var assert = require('assert');
+var sinon = require('sinon');
 var transmitter = require('./');
 var codes = require('./codes');
-var timeTravel = require('time-travel');
 
 describe('transmitter', function() {
+
+  var clock;
+
+  before(function () { clock = sinon.useFakeTimers(); });
+  after(function () { clock.restore(); });
 
   var toggledHistory;
   var toggle;
@@ -12,12 +17,12 @@ describe('transmitter', function() {
 
   beforeEach(function() {
     toggledHistory = [];
-    startTime = new timeTravel.Date();
+    startTime = new Date();
     toggle = function() {
-      toggledHistory.push(new timeTravel.Date() - startTime);
+      toggledHistory.push(new Date() - startTime);
     };
     timeouter = function(fn, ms) {
-      timeTravel.setTimeout(function() {
+      setTimeout(function() {
         fn();
       }, ms * 50);
     };
@@ -31,11 +36,12 @@ describe('transmitter', function() {
       timeouter: timeouter
     }
     transmitter(options, function() {
-      assert.deepEqual(fixTimes(toggledHistory, 50), [
+      assert.deepEqual(toggledHistory, [
         0, 50, 100, 150, 200, 250
       ]);
       done();
     });
+    clock.tick(300);
   });
 
 
@@ -53,6 +59,7 @@ describe('transmitter', function() {
       ]);
       done();
     });
+    clock.tick(1400);
   });
 
   it('transmits a message in morse code', function(done) {
@@ -75,19 +82,8 @@ describe('transmitter', function() {
       ]);
       done();
     });
+    clock.tick(5800);
   });
 
 
 });
-
-
-function fixTimes(actualTimes, interval) {
-  var delta = 0;
-  return actualTimes.map(function(time, index) {
-    time += delta;
-    var fixedTime = (time / interval | 0) * interval;
-    delta += fixedTime - time;
-    return fixedTime;
-  });
-}
-
