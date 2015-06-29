@@ -50,7 +50,7 @@ describe('throttle', function() {
       // it'll be called again in another 5 ms, but last test took care of that
 
       done();
-    }, 55);
+    }, 59);
 
   });
 
