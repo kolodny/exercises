@@ -43,15 +43,15 @@ Now I've reduced the list of values to a single value.
 
 Assume I wanted to know if a number is in the contacts list, but all I knew was the root number `H12345678`, I can ask someone who knows all the contact to send me some specific hashes and verify them myself. For example if I asked someone for `C6` they would send my `C5`, `H78`, and `H1234` and I would hash `C5 + C6` to get `H56` then do `H5678 = hash(H56 + H78)` and then do `root = hash(H1234 + H5678)` and check that the root I derive is the same as the root that I knew beforehand. If it matches then the data must have been in the set the entire time.
 
-For this exercise you need to return a function that takes a list of values and a hashing function an return the merkle root of those values.
+Since this is [Divide and conquer algorithm](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms), for a list of 1 quadrillion contacts (1,000,000,000,000,000) we only need 50 hashes.
 
+For this exercise you need to return a function that takes a list of values and a hashing function an returns an object that contains a root property and a getVerification method as follows:
 
-Here's the basic usage of the file that you'll be creating:
 
 ```js
 var merkle = require('./') // <- this is the file you make;
 
-// from http://stackoverflow.com/a/7616484
+// helper code from http://stackoverflow.com/a/7616484
 var hasher = function(str) {
   var hash = 0, i, chr, len;
   if (str.length == 0) return hash;
@@ -62,6 +62,8 @@ var hasher = function(str) {
   }
   return hash.toString();
 };
+
+
 var myMerkle = merkle(['This', 'is', 'a', 'test'], hasher);
 console.log(myMerkle.root); // -1427219841
 myMerkle.getVerification('not in tree'); // false
