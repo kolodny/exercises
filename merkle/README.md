@@ -62,8 +62,17 @@ var hasher = function(str) {
   }
   return hash.toString();
 };
-var merkleRoot = merkle(['This', 'is', 'a', 'test'], hasher);
-console.log(merkleRoot); // -1427219841
+var myMerkle = merkle(['This', 'is', 'a', 'test'], hasher);
+console.log(myMerkle.root); // -1427219841
+myMerkle.getVerification('not in tree'); // false
+
+// this is an object that the server would return
+var verificationObject = myMerkle.getVerification('test'); // { index: 3, breadcrumbs: [ 'a', '-1790830488' ] }
+
+// this is how the client would verify that the contact exists (the client somehow already knows the root)
+var root = myMerkle.root;
+merkle.verify('test', root, obj, simpleHasher); // true
+merkle.verify('testing', root, obj, simpleHasher); // false
 ```
 
 More info: https://en.wikipedia.org/wiki/Merkle_tree
