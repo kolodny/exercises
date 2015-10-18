@@ -51,6 +51,8 @@ describe('invert-tree', function() {
 
     invertTree(root);
 
+    root = JSON.parse(JSON.stringify(root));
+
     assert.deepEqual(root, {
       "value": 4,
       "left": {
@@ -70,6 +72,8 @@ describe('invert-tree', function() {
     left.left = leftOfLeft;
 
     invertTree(root);
+
+    root = JSON.parse(JSON.stringify(root));
 
     assert.deepEqual(root, {
       "value": 5,
