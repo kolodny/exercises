@@ -24,7 +24,7 @@ describe('curry', function() {
     assert.equal(add(1, 2)(3), 6);
   });
 
-  it('curries the function until the arguments needed are given mutliple times', function() {
+  it('curries the function until the arguments needed are given multiple times', function() {
     var add = curry(function(a, b, c) {
       return a + b + c;
     });
