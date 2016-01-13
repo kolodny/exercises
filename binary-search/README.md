@@ -5,7 +5,7 @@ The classic example given is looking for a name in a phonebook, you first look i
 Imagine a bunch of words in a list
 
 ```js
-['apple banana', 'cherry', 'dates', 'eggs', 'figs', 'grapes']
+['apple', 'banana', 'cherry', 'dates', 'eggs', 'figs', 'grapes']
 ```
 
 If we looks for `cherry` then we first look at the middle of the array we have:
