@@ -25,7 +25,7 @@ describe('async', function() {
       var fun1 = function(cb) {
         setTimeout(cb.bind(null, null, 'test'), 10);
       };
-      var fun2 = function(cb, data) {
+      var fun2 = function(cb) {
         setTimeout(cb.bind(null, null, 'ing'), 10);
       };
 
