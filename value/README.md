@@ -34,7 +34,7 @@ var whoa = function() {
 
 value(scalar);   // should be      'foo'
 value(fn);       // should be      'bar'
-value(fnTwice);  // should aslo be 'bar'
+value(fnTwice);  // should also be 'bar'
 value(fnThrice); // should also be 'bar'
 
 value(whoa);     // should be      'hi'
