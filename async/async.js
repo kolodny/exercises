@@ -11,7 +11,10 @@ exports.sequence = function(fns) {
       }
       // Call the next function in the sequence, unless there are no more,
       // in which case call the final callback
-      var method = fns[index] || finalCallback;
+      var method = fns[index];
+      if (!method) {
+        return finalCallback(null, data);
+      }
       // Increment index
       index++;
       // Execute the next method, passing along the data
