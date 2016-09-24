@@ -44,7 +44,7 @@ exports.parallel = function(fns) {
         // final result object
         finalResult[index] = data;
         // When all functions are complete, invoke the final callback
-        if (finished >= fns.length) {
+        if (finished === fns.length) {
           return finalCallback(null, finalResult);
         }
       })
@@ -53,7 +53,22 @@ exports.parallel = function(fns) {
 };
 
 exports.race = function(fns) {
-  return function(callback) {
-
+  return function(finalCallback) {
+    var complete = false;
+    // We can use a forEach here, because we are starting the
+    // given functions synchronously for them to operate in parallel
+    fns.forEach(function(fn, index) {
+      return fn(function(err, data) {
+        if (complete) {
+          // The race is already won, this result doesn't matter
+          return;
+        }
+        // The race is over, set the complete flag
+        complete = true;
+        // Invoke the final callback with any error or data from
+        // the winning function
+        return finalCallback(err, data);
+      })
+    });
   };
 };
