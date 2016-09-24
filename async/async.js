@@ -21,8 +21,31 @@ exports.sequence = function(fns) {
 };
 
 exports.parallel = function(fns) {
-  return function(callback) {
-
+  return function(finalCallback) {
+    // A counter to verify that all functions complete
+    var finished = 0;
+    // Initialize an array that will store the final result
+    // for each of the functions in the same order that they
+    // are in when passed as a parameter.
+    var finalResult = new Array(fns.length);
+    // We can use a forEach here, because we are starting the
+    // given functions synchronously for them to operate in parallel
+    fns.forEach(function(fn, index) {
+      return fn(function(err, data) {
+        if (err) {
+          // On error, immediately call final callback
+          return finalCallback(err, null);
+        }
+        finished++;
+        // Set the result of this particular function in the
+        // final result object
+        finalResult[index] = data;
+        // When all functions are complete, invoke the final callback
+        if (finished >= fns.length) {
+          return finalCallback(null, finalResult);
+        }
+      })
+    });
   };
 };
 
