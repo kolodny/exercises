@@ -57,7 +57,7 @@ describe('async', function() {
   describe('has a parallel method that', function() {
     it('runs functions in parallel', function(done) {
       var fun1 = function(cb) {
-        setTimeout(cb.bind(null, null, 'test'), 10);
+        setTimeout(cb.bind(null, null, 'test'), 20);
       };
       var fun2 = function(cb) {
         setTimeout(cb.bind(null, null, 'ing'), 10);
