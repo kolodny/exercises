@@ -19,6 +19,7 @@ describe('once', function() {
       return ++t;
     });
     var ret = init();
+    assert.deepEqual(ret, 11);
     assert.deepEqual(init(), ret);
     assert.deepEqual(init(), ret);
   });
