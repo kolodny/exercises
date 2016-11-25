@@ -1,5 +1,5 @@
 var assert = require('assert');
-var async = require('./');
+var async = require('./async');
 
 describe('async', function() {
 
