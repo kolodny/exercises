@@ -10,6 +10,8 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "^2.2.4",
-    "sinon": "^1.15.3"
+    "sinon": "^1.15.3",
+    "babel": "^5.5.7",
+    "source-map-support": "^0.3.1"
   }
 }

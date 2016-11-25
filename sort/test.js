@@ -6,7 +6,7 @@ Array.prototype.sort = function() {
 };
 
 var assert = require('assert');
-var sort = require('./');
+var sort = require('./sort');
 
 describe('sort', function() {
 
@@ -21,7 +21,7 @@ describe('sort', function() {
   it('sorts better than n^2', function() {
     var arr = [];
     for (var i = 0; i < 10000; i++) {
-      arr.push(Math.random());
+      arr.push(Math.floor(Math.random() * 10000));
     }
     nativeSortCalled = false;
     sorted = sort(arr);
