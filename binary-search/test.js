@@ -66,7 +66,7 @@ describe('binarySearch', function() {
     var lookingFor = proxyArray[indexOfElement];
     var index = binarySearch(smartArray, lookingFor);
     assert.equal(index, indexOfElement);
-    assert.equal(Object.keys(lookups).length, 13);
+    assert.equal(Object.keys(lookups).length, 11);
   });
 
 
