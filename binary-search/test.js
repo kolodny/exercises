@@ -65,8 +65,11 @@ describe('binarySearch', function() {
     var indexOfElement = arrayLength - 4;
     var lookingFor = proxyArray[indexOfElement];
     var index = binarySearch(smartArray, lookingFor);
+    var lookupsCount = Object.keys(lookups).length;
+    //depending or implementation of binary search you can get 11 or 13 lookup count.
+    //both implementations are O(log(n)) but implementation with 11 lookup have a smaller constant, so are a little bit better.
+    assert(lookupsCount === 13 || lookupsCount === 11, 'lookup count should be equal 11 or 13. Your value is ' + lookupsCount);
     assert.equal(index, indexOfElement);
-    assert.equal(Object.keys(lookups).length, 11);
   });
 
 
