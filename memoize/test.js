@@ -27,5 +27,12 @@ describe('memoize', function() {
 
   });
 
+  it('returns return value of given function', function() {
+    var memoized = memoize(function(a) {
+      return -a;
+    });
+    assert.equal(-1, memoized(1));
+    assert.equal(1, memoized(-1));
+  });
 
 });
