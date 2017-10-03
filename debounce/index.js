@@ -1,5 +1,8 @@
 module.exports = function debounce(callback, thresholdMilliseconds) {
+  let timeoutId;
+
   return function () {
-    setTimeout(callback, thresholdMilliseconds);
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(callback, thresholdMilliseconds);
   };
 }
