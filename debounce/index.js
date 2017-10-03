@@ -3,6 +3,6 @@ module.exports = function debounce(callback, thresholdMilliseconds) {
 
   return function () {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(callback, thresholdMilliseconds);
+    timeoutId = setTimeout(() => callback.call(this), thresholdMilliseconds);
   };
 }
